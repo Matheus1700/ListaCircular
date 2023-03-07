@@ -1,0 +1,35 @@
+public void removerElemento(int elementoRemovido) {
+		No atual = this.ultimo;		
+		boolean existeNaLista = false; 
+		
+		for (int i = 0; i<this.tamanho; i++) {
+			int elementoComparado = atual.getProximo().getElemento();
+			
+			if (elementoRemovido == elementoComparado) {
+				atual.setProximo(atual.getProximo().getProximo());
+				tamanho--;
+				
+				if (elementoRemovido == this.inicio.getElemento()) {
+					this.inicio = this.inicio.getProximo();
+				} else if (elementoRemovido == this.ultimo.getElemento()) {
+					this.ultimo = this.ultimo.getProximo(); // deve ta aqui o erro
+				}
+				
+				existeNaLista = true;
+				
+			} else {
+				atual = atual.getProximo();
+			}
+		}		
+		
+		if (existeNaLista == false) { 
+			System.out.println("Elemento '" +elementoRemovido+ "' nao existe na lista!");
+		}
+		
+		// ta aqui
+		if (this.tamanho == 0) {
+			this.inicio = null;
+		}
+	}
+
+// funcao antiga de remover
